@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost:27017/car-sales')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB error:', err));
 
-// Маршруты
+// routes
 app.use('/api/cars', carRoutes);
 app.use('/api/car-types', carTypeRoutes); 
 
