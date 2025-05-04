@@ -1,14 +1,20 @@
 // backend/index.js
 const express = require('express');
+const mongoose = require('mongoose');
+const carRoutes = require('./backend/routes/car');
+const carTypeRoutes = require('./backend/routes/carType'); 
+
 const app = express();
-const port = 3001;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Backend is working!');
-});
+mongoose.connect('mongodb://localhost:27017/car-sales', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB error:', err));
 
-app.listen(port, () => {
-  console.log(`Backend running on port ${port}`);
-});
+// Маршруты
+app.use('/api/cars', carRoutes);
+app.use('/api/car-types', carTypeRoutes); 
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
