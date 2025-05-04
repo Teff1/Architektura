@@ -1,8 +1,8 @@
 // backend/index.js
 const express = require('express');
 const mongoose = require('mongoose');
-const carRoutes = require('./backend/routes/car');
-const carTypeRoutes = require('./backend/routes/carType'); 
+const carRoutes = require('.routes/car');
+const carTypeRoutes = require('./routes/carType'); 
 
 const app = express();
 
